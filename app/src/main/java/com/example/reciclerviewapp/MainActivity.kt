@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val client = OkHttpClient()
         client.newCall(request).enqueue(object: Callback {
             override fun onResponse(call: Call, response: Response) {
-                val body = response?.body?.string()
+                val body = response.body?.string()
                 println(body)
 
                 val gson = GsonBuilder().create()
@@ -45,9 +45,3 @@ class MainActivity : AppCompatActivity() {
         } )
     }
 }
-class HomeFeed(val videos: List<Video>)
-
-class Video(val id: Int, val name: String, val link: String, val imageUrl: String,
-val numberOfViews: Int, val channel: Channel)
-
-class Channel(val name: String, val profileImageUrl: String)
